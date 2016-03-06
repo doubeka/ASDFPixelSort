@@ -32,6 +32,7 @@ void setup() {
 
 
 void draw() {
+  image(img, 0, 0);
   while(column < width-1) {
     img.loadPixels(); 
     sortColumn();
@@ -48,7 +49,8 @@ void draw() {
   
   image(img,0,0);
   if(!saved && frameCount >= loops) {
-    saveFrame(imgFileName+"_"+mode+".png");
+    String path = savePath(imgFileName+"_"+mode+".png");
+    img.save(path);
     saved = true;
     println("DONE"+frameCount);
     System.exit(0);
